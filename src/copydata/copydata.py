@@ -1,23 +1,17 @@
-import json
 import click
+import sys
 
-
-class Config:
-    config = None
-    valid_sources = ("html-source",)
-    valid_targets = ("database-target",)
-
-    def __init__(self, path):
-        with open(path, "r") as config_file:
-            config = json.loads(config_file.read())
-
-    def validate(self):
-        pass
+from .config import Config
 
 
 @click.command()
-@click.argument('f', type=click.Path(exists=True))
-def run(f):
-    config = Config(f)
-    config.validate()
-    click.echo(f"loaded config: {config.config}")
+@click.argument('file_path', type=click.Path(exists=True))
+def run(file_path):
+    config = Config(file_path)
+    error = config.validate()
+    if error:
+        click.echo(f"Error loading config: {error}")
+        sys.exit(1)
+
+    # continue the process
+    click.echo(f"Starting to copy the data...")

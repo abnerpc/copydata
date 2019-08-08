@@ -32,6 +32,7 @@ setup(
     install_requires=['click', 'records', 'requests'],
     extras_require={
         'test': ['pytest'],
+        'dev': ['ipython', 'flake8', 'isort'],
     },
     entry_points={
         'console_scripts': [

@@ -5,4 +5,13 @@ clean:
 	@rm -rf build
 
 test: clean
-	@pytest
+	pytest
+
+install: clean
+	pip install .
+
+install-test: clean
+	pip install .[test]
+
+install-dev: clean
+	pip install -e ".[test,dev]"

@@ -5,7 +5,7 @@ clean:
 	@rm -rf build
 
 test: clean
-	pytest
+	pytest -v
 
 install: clean
 	pip install .

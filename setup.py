@@ -32,7 +32,7 @@ setup(
     python_requires='>=3.7',
     install_requires=['click', 'records', 'requests'],
     extras_require={
-        'test': ['pytest'],
+        'test': ['pytest', 'pytest-randomly'],
         'dev': ['ipython', 'flake8', 'isort'],
     },
     entry_points={

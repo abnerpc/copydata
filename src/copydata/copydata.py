@@ -2,14 +2,13 @@ import sys
 
 import click
 
-from .config import Config
+from .config import build_config
 
 
 @click.command()
 @click.argument('file_path', type=click.Path(exists=True))
 def run(file_path):
-    config = Config(file_path)
-    error = config.validate()
+    config, error = build_config(file_path)
     if error:
         click.echo(f"Error loading config: {error}")
         sys.exit(1)
